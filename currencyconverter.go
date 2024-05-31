@@ -1,0 +1,60 @@
+package main
+
+var ConversionRates = map[string]float64{
+	"SEK": 8.8112,
+	"ATS": 13.3436,
+	"AUD": 1.3028,
+	"BEF": 39.1185,
+	"BRL": 3.1207,
+	"CAD": 1.3335,
+	"CHF": 0.9959,
+	"CNY": 6.9075,
+	"CYP": 0.5442,
+	"CZK": 25.0974,
+	"DEM": 1.8966,
+	"DKK": 6.9054,
+	"EEK": 15.3105,
+	"ESP": 161.3477,
+	"EUR": 0.9288,
+	"FIM": 5.7657,
+	"FRF": 6.3610,
+	"GBP": 0.8095,
+	"GRD": 330.4283,
+	"HKD": 7.7645,
+	"HUF": 287.6563,
+	"IDR": 13330.1059,
+	"IEP": 0.7637,
+	"INR": 65.5327,
+	"ISK": 108.7695,
+	"ITL": 187751.97,
+	"JPY": 113.3492,
+	"KRW": 1132.3994,
+	"KWD": 0.3774,
+	"LTL": 3.1977,
+	"LVL": 0.6922,
+	"MAD": 9.9946,
+	"MXN": 19.2426,
+	"MYR": 4.8951,
+	"NLG": 2.1370,
+	"NOK": 8.4816,
+	"NZD": 1.4312,
+	"PLN": 3.9987,
+	"PTE": 19441.33,
+	"RUB": 57.9071,
+	"SAR": 3.7502,
+	"SGD": 1.4029,
+	"SIT": 23310.05,
+	"SKK": 0.0,
+	"THB": 3490.97,
+	"TRL": 176224000.0,
+	"TRY": 3.6064,
+	"USD": 1.0,
+	"ZAR": 12.7717,
+}
+
+func ConvertUSDToOther(amount float64, toCurrency string) float64 {
+	if rate, found := ConversionRates[toCurrency]; found {
+		return amount * rate
+	}
+	return -1
+}
