@@ -1,60 +1,46 @@
 package main
 
 var ConversionRates = map[string]float64{
-	"SEK": 8.8112,
-	"ATS": 13.3436,
-	"AUD": 1.3028,
-	"BEF": 39.1185,
-	"BRL": 3.1207,
-	"CAD": 1.3335,
-	"CHF": 0.9959,
-	"CNY": 6.9075,
-	"CYP": 0.5442,
-	"CZK": 25.0974,
-	"DEM": 1.8966,
-	"DKK": 6.9054,
-	"EEK": 15.3105,
-	"ESP": 161.3477,
-	"EUR": 0.9288,
-	"FIM": 5.7657,
-	"FRF": 6.3610,
-	"GBP": 0.8095,
-	"GRD": 330.4283,
-	"HKD": 7.7645,
-	"HUF": 287.6563,
-	"IDR": 13330.1059,
-	"IEP": 0.7637,
-	"INR": 65.5327,
-	"ISK": 108.7695,
-	"ITL": 187751.97,
-	"JPY": 113.3492,
-	"KRW": 1132.3994,
-	"KWD": 0.3774,
-	"LTL": 3.1977,
-	"LVL": 0.6922,
-	"MAD": 9.9946,
-	"MXN": 19.2426,
-	"MYR": 4.8951,
-	"NLG": 2.1370,
-	"NOK": 8.4816,
-	"NZD": 1.4312,
-	"PLN": 3.9987,
-	"PTE": 19441.33,
-	"RUB": 57.9071,
-	"SAR": 3.7502,
-	"SGD": 1.4029,
-	"SIT": 23310.05,
-	"SKK": 0.0,
-	"THB": 3490.97,
-	"TRL": 176224000.0,
-	"TRY": 3.6064,
+	"SEK": 11.10,
+	"AUD": 1.50,
+	"BRL": 4.90,
+	"CAD": 1.36,
+	"CHF": 0.90,
+	"CNY": 7.12,
+	"CZK": 22.35,
+	"DKK": 6.89,
+	"EUR": 0.94,
+	"GBP": 0.79,
+	"HKD": 7.83,
+	"HUF": 361.95,
+	"IDR": 15000.00,
+	"INR": 82.00,
+	"ISK": 136.00,
+	"JPY": 139.60,
+	"KRW": 1303.50,
+	"KWD": 0.31,
+	"MAD": 10.50,
+	"MXN": 17.66,
+	"MYR": 4.60,
+	"NOK": 10.51,
+	"NZD": 1.62,
+	"PLN": 4.31,
+	"RUB": 77.21,
+	"SAR": 3.75,
+	"SGD": 1.34,
+	"THB": 35.11,
+	"TRY": 23.60,
 	"USD": 1.0,
-	"ZAR": 12.7717,
+	"ZAR": 18.58,
 }
 
-func ConvertUSDToOther(amount float64, toCurrency string) float64 {
-	if rate, found := ConversionRates[toCurrency]; found {
-		return amount * rate
+func ConvertCurrency(amount float64, fromCurrency string, toCurrency string) float64 {
+	fromRate, fromFound := ConversionRates[fromCurrency]
+	toRate, toFound := ConversionRates[toCurrency]
+
+	if fromFound && toFound {
+		usdAmount := amount / fromRate
+		return usdAmount * toRate
 	}
 	return -1
 }

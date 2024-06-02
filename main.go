@@ -6,9 +6,9 @@ import (
 
 func main() {
 	var amount float64
-	var toCurrency string
+	var fromCurrency, toCurrency string
 
-	fmt.Print("Enter the amount in USD: ")
+	fmt.Print("Enter the amount: ")
 	fmt.Scan(&amount)
 
 	fmt.Println("List of available currencies:")
@@ -16,12 +16,15 @@ func main() {
 		fmt.Printf("%s - %s\n", currencyCode, currencyName)
 	}
 
+	fmt.Print("Enter the currency code to convert from: ")
+	fmt.Scan(&fromCurrency)
+
 	fmt.Print("Enter the currency code to convert to: ")
 	fmt.Scan(&toCurrency)
 
-	result := ConvertUSDToOther(amount, toCurrency)
+	result := ConvertCurrency(amount, fromCurrency, toCurrency)
 	if result != -1 {
-		fmt.Printf("USD %.2f --> %s %.2f\n", amount, toCurrency, result)
+		fmt.Printf("%s %.2f --> %s %.2f\n", fromCurrency, amount, toCurrency, result)
 	} else {
 		fmt.Println("Invalid currency provided.")
 	}
